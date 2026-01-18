@@ -24,6 +24,54 @@
             "logic": "equals",
             "value": 1
         }
-    ]
+    ],
+
+    "model":
+    {
+        "time_start": "days_to_initial_pathologic_diagnosis",
+        "time_end_event": "days_to_death",
+        "time_end_censor": "days_to_last_followup",
+        "covars": [
+            {
+                "field": "age_at_initial_pathologic_diagnosis",
+                "type": "numeric",
+                "ds": "clinical"
+            } ,
+
+            {
+                "field": "gender",
+                "type": "categorical",
+                "ds": "clinical"
+            },
+
+            {
+                "field": "pathologic_M",
+                "type": "categorical",
+                "ds": "clinical",
+                "exclude": ["MX"],
+                "binarize": 
+                {
+                    "zero": ["M0"],
+                    "one": ["M1", "M1a", "M1b"]
+                }
+            },
+
+            {
+                "field": "pathologic_N",
+                "type": "categorical",
+                "ds": "clinical",
+                "exclude": ["NX"],
+                "binarize": 
+                {
+                    "zero": ["N0"],
+                    "one": ["N1", "N2", "N3"]
+                }
+            }
+        ]
+    },
+
+    "qc": {
+        "proportion_missing_rm_variable": 0.2
+    }
 
 }
