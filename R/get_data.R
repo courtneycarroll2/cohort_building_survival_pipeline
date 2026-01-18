@@ -1,6 +1,5 @@
 library(UCSCXenaTools)
 library(jsonlite)
-library(tibble)
 
 # Deserialize JSON file to get cohort specifications
 get_cohort_specs <- function(file) {
