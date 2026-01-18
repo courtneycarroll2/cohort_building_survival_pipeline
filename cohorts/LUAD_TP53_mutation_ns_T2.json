@@ -1,0 +1,29 @@
+{
+    "name": "LUAD_TP53_mutation_ns_T2",
+    "description": "TCGA LUAD patients with TP53 mutations, T stage 2/2a/2b, and no history of smoking",
+    "cancer_type": "LUAD",
+
+    "clinical_criteria": [
+        {
+            "field": "tobacco_smoking_history",
+            "logic": "equals",
+            "value": 1
+        },
+
+        {
+            "field": "pathologic_T",
+            "logic": "in",
+            "value": ["T2", "T2a", "T2b"]
+        }
+
+    ],
+
+    "genomic_criteria": [
+        {
+            "field": "TP53",
+            "logic": "equals",
+            "value": 1
+        }
+    ]
+
+}

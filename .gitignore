@@ -1,0 +1,13 @@
+# RStudio and R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS
+.DS_Store
+
+# renv
+renv/library/
+renv/python/
+renv/staging/
