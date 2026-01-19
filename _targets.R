@@ -47,13 +47,14 @@ tar_option_set(
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source("R/get_data.R")
-tar_source("R/quality_control.R")
+# add in code to do multiple imputation
 tar_source("R/build_cohort.R")
 
 # Replace the target list below with your own:
 list(
   tar_target(cohort_json_file, "cohorts/LUAD_TP53_mutation_ns_T2.json", format = "file"),
   tar_target(cohort_specs, get_cohort_specs(cohort_json_file)),
-  tar_target(combined_data, get_data(cohort_specs))
+  tar_target(all_data, get_data(cohort_specs)),
+  tar_target(cohort_data, build_cohort(cohort_specs, all_data))
   
 )
