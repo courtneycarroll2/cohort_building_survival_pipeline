@@ -1,15 +1,9 @@
 {
-    "name": "LUAD_TP53_mutation_ns_T2",
-    "description": "TCGA LUAD patients with TP53 mutations, T stage 2/2a/2b, and no history of smoking",
+    "name": "LUAD_TP53_mutation_T2",
+    "description": "TCGA LUAD patients with TP53 mutations and T stage 2/2a/2b",
     "cancer_type": "LUAD",
 
     "clinical_criteria": [
-        {
-            "field": "tobacco_smoking_history",
-            "logic": "equals",
-            "value": 1
-        },
-
         {
             "field": "pathologic_T",
             "logic": "in",
@@ -31,6 +25,18 @@
         "time_start": "days_to_initial_pathologic_diagnosis",
         "time_end_event": "days_to_death",
         "time_end_censor": "days_to_last_followup",
+
+        "subset": 
+        {
+            "field": "tobacco_smoking_history_indicator",
+            "type": "categorical",
+            "group":
+            {
+                "0": ["Lifelong Non-smoker"],
+                "1": ["Current reformed smoker for < or = 15 years", "Current reformed smoker for > 15 years", "Current smoker"]
+            }
+        },
+
         "covars": [
             {
                 "field": "age_at_initial_pathologic_diagnosis",
@@ -49,10 +55,10 @@
                 "type": "categorical",
                 "ds": "clinical",
                 "exclude": ["MX"],
-                "binarize": 
+                "group": 
                 {
-                    "zero": ["M0"],
-                    "one": ["M1", "M1a", "M1b"]
+                    "0": ["M0"],
+                    "1": ["M1", "M1a", "M1b"]
                 }
             },
 
@@ -61,10 +67,10 @@
                 "type": "categorical",
                 "ds": "clinical",
                 "exclude": ["NX"],
-                "binarize": 
+                "group": 
                 {
-                    "zero": ["N0"],
-                    "one": ["N1", "N2", "N3"]
+                    "0": ["N0"],
+                    "1": ["N1", "N2", "N3"]
                 }
             }
         ]

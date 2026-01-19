@@ -2,7 +2,7 @@
 
 library(dplyr)
 
-# Filters the dataset to meet cohort criteria Takes in dataframe (output of get_data()) and the deserialized JSON cohort criteria and returns the appropriate cohort.
+# Filters the dataset to meet cohort criteria. Takes in dataframe (output of get_data()) and the deserialized JSON cohort criteria and returns the appropriate cohort.
 build_cohort <- function(cohort_specs, combined_data) {
   criteria_data <- get_criteria_data(cohort_specs)
   output_df <- combined_data

@@ -50,7 +50,8 @@ tar_source("R/get_data.R")
 # add in code to do multiple imputation
 tar_source("R/build_cohort.R")
 
-# Replace the target list below with your own:
+# Target list
+# NOTE: make this self-documenting: break out get_data into get_clinical and get_genomic, then merge to get all_data.
 list(
   tar_target(cohort_json_file, "cohorts/LUAD_TP53_mutation_ns_T2.json", format = "file"),
   tar_target(cohort_specs, get_cohort_specs(cohort_json_file)),
