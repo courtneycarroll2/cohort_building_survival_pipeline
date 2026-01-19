@@ -54,6 +54,6 @@ tar_source("R/build_cohort.R")
 list(
   tar_target(cohort_json_file, "cohorts/LUAD_TP53_mutation_ns_T2.json", format = "file"),
   tar_target(cohort_specs, get_cohort_specs(cohort_json_file)),
-  tar_target(clin_data, get_data(cohort_specs))
+  tar_target(combined_data, get_data(cohort_specs))
   
 )
