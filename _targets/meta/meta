@@ -1,0 +1,15 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+cohort_json_file|stem|3cbe719dcb757964|a43ac09004070678|2c530c1562a7fbd1|1228116759|cohorts/LUAD_TP53_mutation_ns_T2.json|t20472.1647695062s|s2022b|2022|file|local|vector|||0.004||
+cohort_model_specs|stem|771e8ac9f29af28e|3ed9f4caaeb51838|643090a46edec7fc|1245133046||t20477.8995586046s|s722b|722|rds|local|vector|||0.001||
+clinical_data|stem|1145157235978297|075a5b408808b785|d086a1cb7b2bf18e|160207682||t20477.8995841624s|s162101b|162101|rds|local|vector|||2.136||
+get_cohort_model_specs|function|f92eace8ca2f3025
+make_cancer_filter_term|function|d066a929af345c81
+col_exists_in_dataset|function|4bc9ee103265c386
+.Random.seed|object|d7ca378921a6d3bb
+get_subset|function|ff468e934fff937c
+get_clinical_data|function|571d6ed735645a06
+col_exists_any_dataset|function|cf106638a1d587b6
+get_needed_genes|function|e210b1941829cb58
+get_genomic_data|function|bd2e40550b532877
+get_data|function|42c03c4430f34b8c
+genomic_data|stem|1026ea96a0801bb0|f852a3366be598a3|3d5365a033762b75|-1657679069||t20477.9038253985s|s681898b|681898|rds|local|vector|||2.415|One or more parsing issues, call `problems()` on your data frame for details, e.g.:   dat <- vroom(...)   problems(dat)|
