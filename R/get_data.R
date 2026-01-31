@@ -39,7 +39,7 @@ get_clinical_data <- function(cohort_model_specs) {
 
 # Download TCGA LUAD gene-level mutation/genomic data from UCSC Xena if mutation data is needed for criteria or analysis.
 # Input is deserialized JSON file with cohort and model specifications.
-# Output is a dataframe gene-level mutation data, with genes in the first column and subsequent columns representing sample IDs; or NULL, if mutation data is not needed.
+# Output is a dataframe gene-level mutation data, with SampleIDs in the first column and subsequent columns representing genes; or NULL, if mutation data is not needed.
 get_genomic_data <- function(cohort_model_specs) {
   
   # Get mutation/genomic data
@@ -61,7 +61,14 @@ get_genomic_data <- function(cohort_model_specs) {
     return(NULL)
   }
   
-  return(gen)
+  # transpose matrix to make sample IDs in first column and subsequent columns genes.
+  sample_names <- gen$sample
+  gen2 <- as.data.frame(t(gen[,2:ncol(gen)]))
+  colnames(gen2) <- sample_names
+  gen2 <- data.frame("sampleID" = rownames(gen2), gen2)
+  rownames(gen2) <- NULL
+  
+  return(gen2)
 }
 
 
