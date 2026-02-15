@@ -72,32 +72,6 @@ get_genomic_data <- function(cohort_model_specs) {
 }
 
 
-# Use this function to retrieve the clinical and, if desired, genomic data, based on the criteria and variables specified in the JSON. Input is a deserialized JSON file (use get_cohort_model_specs())
-# Will return the clinical data, plus any genomic criteria or genomic survival variables specified.
-get_data <- function(cohort_model_specs, clin, gen) {
-  
-  
-  # If there are no genomic criteria, and no genes are listed as covariates, don't get genomic data; just return clinical.
-  if (is.null(cohort_model_specs$genomic_criteria) & (length(needed_genes) == 0)) {
-    return(clin)
-  }
-  
-  else {
-    gen <- get_genomic_data(cohort_model_specs)
-    sample_names <- gen$sample
-    gen2 <- as.data.frame(t(gen[,2:ncol(gen)]))
-    colnames(gen2) <- sample_names
-    gen2 <- data.frame("sampleID" = rownames(gen2), gen2)
-    rownames(gen2) <- NULL
-    
-    gen3 <- gen2[,which(colnames(gen2) %in% c("sampleID", genomic_vars))]
-    
-    output_df <- merge(clin, gen3, by="sampleID")
-    return(output_df)
-  }
-}
-
-
 
 
 
