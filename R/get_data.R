@@ -4,7 +4,7 @@
 library(UCSCXenaTools)
 library(jsonlite)
 
-source("R/testing.R")
+source("R/helper.R")
 
 # Deserialize JSON file to get cohort and model specifications
 # requires path to JSON file as input.
