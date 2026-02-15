@@ -4,7 +4,7 @@
 
 # Identifies samples with >X% genomic/mutation data missing; percentage specified in deserialized JSON specs file under cohort_model_specs$qc$proportion_missing_rm_variable, if 1) genomic_data is not NULL, and 2) cohort_model_specs$qc$proportion_missing_rm_variable exists.
 # If the two criteria above are met, this function returns a list containing 1) a vector of sample IDs to retain and 2) stats to add to a qc file. Otherwise, it returns NULL.
-qc_genomic <- function(genomic_data, cohort_model_specs) {
+qc_genomic_ids <- function(genomic_data, cohort_model_specs) {
   # Find samples missing < specified proportion of genomic data
   if (!is.null(cohort_model_specs$qc$proportion_missing_rm_variable) & !is.null(genomic_data)) {
     pct <- cohort_model_specs$qc$proportion_missing_rm_variable
