@@ -5,7 +5,7 @@
 
 # Load packages required to define the pipeline:
 library(targets)
-# library(tarchetypes) # Load other packages as needed.
+library(tarchetypes) # Load other packages as needed.
 
 
 # Set target options:
@@ -49,7 +49,7 @@ tar_option_set(
 tar_source("R/get_data.R")
 # add in code to do multiple imputation
 #tar_source("R/qc.R")
-#tar_source("R/build_cohort.R")
+tar_source("R/build_cohort.R")
 
 # Target list
 # NOTE: make this self-documenting: break out get_data into get_clinical and get_genomic, then merge to get all_data. Do QC on each separate dataset.
@@ -58,10 +58,9 @@ list(
   tar_target(cohort_json_file, "cohorts/LUAD_TP53_mutation_ns_T2.json", format = "file"),
   tar_target(cohort_model_specs, get_cohort_model_specs(cohort_json_file)),
   tar_target(clinical_data, get_clinical_data(cohort_model_specs)),
-  tar_target(genomic_data, get_genomic_data(cohort_model_specs))
-  #tar_target(cohort_data, build_cohort(cohort_model_specs, all_data))
-  
+  tar_target(genomic_data, get_genomic_data(cohort_model_specs)),
+  tar_target(cohort_data, build_cohort(cohort_model_specs, clinical_data, genomic_data))
 )
 
-# functions are: tar_manifest(), tar_visreg(), and tar_make().
+# functions are: tar_manifest(), tar_visnetwork(), and tar_make().
 
